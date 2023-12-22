@@ -22,18 +22,4 @@ public class CardOrderTest {
                         "Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время."
                 ));
     }
-
-    @Test
-    void testIncorrectInputs() {
-        open("http://localhost:9999");
-        $("[data-test-id=name] input").setValue("Фамилия"); // Имя не указано, должно падать, но не падает!
-        $("[data-test-id=phone] input").setValue("+79998887766");
-        $("[data-test-id=agreement]").click();
-        $(".button").click();
-
-        $("[data-test-id=order-success]").shouldBe(
-                Condition.exactText(
-                        "Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время."
-                ));
-    }
 }
